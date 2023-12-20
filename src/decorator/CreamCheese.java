@@ -16,7 +16,7 @@ public class CreamCheese extends BordaDecorator{
 
 	@Override
 	public double preco() {
-		return 3.0 + pizza.preco();
+		return 5.0 + pizza.preco();
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import bebidas.Bebida;
+import pizza.Pizza;
 
 public class Cliente {
 	static String tipoBebida = "";
@@ -56,7 +57,8 @@ public class Cliente {
 					System.out.println("[Queijos adicionais]\n"
 							+ "1 - Cheddar\n"
 							+ "2 - Coalho\n"
-							+ "3 - Gorgonzola");
+							+ "3 - Gorgonzola\n"
+							+ "4 - Não quero mais queijos");
 					int queijo = scanQueijo.nextInt();
 					if (queijo == 1) {
 						listaQueijo.add("Cheddar");
@@ -74,9 +76,10 @@ public class Cliente {
 				
 				Scanner scanBorda = new Scanner(System.in);
 				for(int i = 0; i <1; i++) {
-					System.out.println("[Bordas]\n"
+					System.out.println("[Bordas recheadas]\n"
 							+ "1 - CreamCheese\n"
-							+ "2 - Catupiry");
+							+ "2 - Catupiry\n"
+							+ "3 - Não quero borda recheada");
 					
 					int borda = scanBorda.nextInt();
 					if(borda == 1) {
@@ -144,7 +147,12 @@ public class Cliente {
 
 	private static double calcularConta(Preparo preparo) {
 		double total = 0;
-		for (Bebida bebida : preparo.getPedidos()) {
+		
+		for(Pizza pizza: preparo.getPedidosPizza()) {
+			System.out.println("- Pizza "+ pizza.getDescricao()+ " - "+ pizza.preco());
+			total+= pizza.preco();
+		}
+		for (Bebida bebida : preparo.getPedidosBebida()) {
 			System.out.println("- " + bebida.getDescricao() + " - " + bebida.preco());
 			total += bebida.preco();
 

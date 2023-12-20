@@ -5,8 +5,8 @@ public abstract class Pizza {
 	
 	public abstract double preco();
 	
-	public void prepararPizza(String tipo) {
-		System.out.println("Preparando pizza "+ tipo);
+	public void rechearPizza(String tipo) {
+		System.out.println("Recheando pizza "+ tipo);
 	}
 	
 	public void assarPizza(String tipo) {

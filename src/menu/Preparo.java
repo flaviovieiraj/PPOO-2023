@@ -23,7 +23,8 @@ public class Preparo {
 	Bebida bebida;
 	Pizza pizza;
 
-	private List<Bebida> pedidos = new ArrayList<>();
+	private List<Bebida> bebidasPedidas = new ArrayList<>();
+	private List<Pizza> pizzasPedidas = new ArrayList<>();
 
 	public void fazerPedido(String factoryType) {
 		if (factoryType.equalsIgnoreCase("Bebida")) {
@@ -35,24 +36,28 @@ public class Preparo {
 			if (bebida != null) {
 				bebida.prepararBebida();
 
-				pedidos.add(bebida);
+				bebidasPedidas.add(bebida);
 
 				System.out.println("Pedido de " + bebida.getDescricao() + " completo.");
 				System.out.println("Valor: R$" + bebida.preco());
 			}
 		} else if (factoryType.equalsIgnoreCase("Salgada")) {
-			System.out.println("Pedido de " + tipoPizza + " anotado.");
+			System.out.println("Pedido de pizza " + tipoPizza + " anotado.");
 
 			PizzaFactory factory = new PizzaFactory();
 			pizza = factory.criarPizza(tipoPizza);
 
-			pizza.prepararPizza(tipoPizza);
+			
+			pizza.rechearPizza(tipoPizza);
 			pizza.assarPizza(tipoPizza);
 			pizza.servirPizza(tipoPizza);
+			
 
 			pizza = decorarSalgada(listaBorda, listaCarne, listaQueijo);
 
-			System.out.println("Pedido de " + pizza.getDescricao() + " completo.");
+			pizzasPedidas.add(pizza);
+			
+			System.out.println("Pedido de pizza " + pizza.getDescricao() + " completo.");
 			System.out.println("valor: R$" + pizza.preco());
 
 		} else if (factoryType.equalsIgnoreCase("Doce")) {
@@ -62,10 +67,12 @@ public class Preparo {
 			pizza = factory.criarPizza(tipoPizza);
 
 			pizza.assarPizza(tipoPizza);
-			pizza.prepararPizza(tipoPizza);
+			pizza.rechearPizza(tipoPizza);
 			pizza.servirPizza(tipoPizza);
 
 			pizza = decorarDoce(listaDoce);
+
+			pizzasPedidas.add(pizza);
 
 			System.out.println("Pedido de " + pizza.getDescricao() + " completo.");
 			System.out.println("Valor: R$" + pizza.preco());
@@ -73,8 +80,12 @@ public class Preparo {
 		System.out.println("");
 	}
 
-	public List<Bebida> getPedidos() {
-		return pedidos;
+	public List<Bebida> getPedidosBebida() {
+		return bebidasPedidas;
+	}
+	
+	public List<Pizza> getPedidosPizza(){
+		return pizzasPedidas;
 	}
 
 	public Pizza decorarSalgada(String[] listaBorda, String[] listaCarne, String[] listaQueijo) {
