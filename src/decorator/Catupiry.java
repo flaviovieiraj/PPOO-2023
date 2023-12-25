@@ -11,7 +11,7 @@ public class Catupiry extends BordaDecorator {
 
 	@Override
 	public String getDescricao() {
-		return pizza.getDescricao() + "com borda de Catupiry";
+		return pizza.getDescricao() + " com borda de Catupiry";
 	}
 
 	@Override

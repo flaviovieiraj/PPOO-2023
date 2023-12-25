@@ -2,20 +2,21 @@ package decorator;
 
 import pizza.Pizza;
 
-public class Coalho extends QueijoDecorator{
+public class Banana extends FrutaDecorator{
 	Pizza pizza;
 	
-	public Coalho(Pizza pizza) {
+	public Banana (Pizza pizza) {
 		this.pizza = pizza;
 	}
 	
 	@Override
 	public String getDescricao() {
-		return pizza.getDescricao() + ", Coalho";
+		return pizza.getDescricao() + ", Banana";
 	}
+
 	@Override
 	public double preco() {
-		return 2 + pizza.preco();
+		return 2.0 + pizza.preco();
 	}
 
 }

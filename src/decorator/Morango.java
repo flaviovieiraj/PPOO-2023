@@ -2,7 +2,7 @@ package decorator;
 
 import pizza.Pizza;
 
-public class Morango extends DoceDecorator{
+public class Morango extends FrutaDecorator{
 	Pizza pizza;
 	
 	public Morango(Pizza pizza) {
